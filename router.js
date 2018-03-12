@@ -15,7 +15,6 @@
   const loadedStyleSelector = "#thin-router-style";
 
   const routerChanged = async (newUrl) => {
-    console.log(newUrl);
     const hash = newUrl.split("/#")[1];
     if(!hash) {
       throw new Error("The url link is not correct. Make sure that you're using hash in url");
@@ -25,7 +24,6 @@
       const routeHtmlFileUrl = `/views/${hash}/index.html`;
       const routeJsFileUrl = `/views/${hash}/index.js`;
       const routeCssFileUrl = `/views/${hash}/index.css`;
-      console.log(`Getting ${routeHtmlFileUrl}`);
       const htmlResponse = await fetch(routeHtmlFileUrl);
       const htmlContent = await htmlResponse.text();
 
@@ -42,7 +40,6 @@
           isScriptLoaded.remove();
         }
 
-        console.log(`Getting ${routeJsFileUrl}`);
         const jsResponse = await fetch(routeJsFileUrl);
         checkStatus(jsResponse);
         const jsContent = await jsResponse.text();
@@ -69,7 +66,6 @@
           isStyleLoaded.remove();
         }
         
-        console.log(`Getting ${routeCssFileUrl}`);
         const cssResponse = await fetch(routeCssFileUrl);
         checkStatus(cssResponse);
         const cssContent = await cssResponse.text();
