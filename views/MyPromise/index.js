@@ -43,9 +43,7 @@
           }, (rejection) => {
             rejectedValues.push(rejection);
             if (rejectedValues.length === arrayOfPromises.length) {
-              if (!alreadyResolved) {
-                reject(rejectedValues);
-              }
+              reject(rejectedValues);
             }
           });
         });
